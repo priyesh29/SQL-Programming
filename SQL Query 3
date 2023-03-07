@@ -1,0 +1,99 @@
+mysql> SELECT * FROM CUSTOMERS Limit 3;
++----+---------+------+-----------+--------+
+| ID | Name    | Age  | Address   | Salary |
++----+---------+------+-----------+--------+
+|  1 | Ramesh  |   32 | Ahemdabad |   2000 |
+|  2 | Khilan  |   25 | Delhi     |   1500 |
+|  3 | Kaushik |   23 | Kota      |   2000 |
++----+---------+------+-----------+--------+
+3 rows in set (0.03 sec)
+
+mysql> SELECT * FROM CUSTOMERS Order By Name, Salary;
++----+----------+------+-----------+--------+
+| ID | Name     | Age  | Address   | Salary |
++----+----------+------+-----------+--------+
+|  4 | Chaitali |   25 | Mumbai    |   6500 |
+|  5 | Hardik   |   27 | Bhopal    |   8500 |
+|  3 | Kaushik  |   23 | Kota      |   2000 |
+|  2 | Khilan   |   25 | Delhi     |   1500 |
+|  7 | Muffy    |   24 | Indore    |  10000 |
+|  1 | Ramesh   |   32 | Ahemdabad |   2000 |
++----+----------+------+-----------+--------+
+6 rows in set (0.01 sec)
+
+mysql> SELECT * FROM CUSTOMERS Order By Name desc;
++----+----------+------+-----------+--------+
+| ID | Name     | Age  | Address   | Salary |
++----+----------+------+-----------+--------+
+|  1 | Ramesh   |   32 | Ahemdabad |   2000 |
+|  7 | Muffy    |   24 | Indore    |  10000 |
+|  2 | Khilan   |   25 | Delhi     |   1500 |
+|  3 | Kaushik  |   23 | Kota      |   2000 |
+|  5 | Hardik   |   27 | Bhopal    |   8500 |
+|  4 | Chaitali |   25 | Mumbai    |   6500 |
++----+----------+------+-----------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select name, sum(salary) from Customers Group By Name;
++----------+-------------+
+| name     | sum(salary) |
++----------+-------------+
+| Ramesh   |        2000 |
+| Khilan   |        1500 |
+| Kaushik  |        2000 |
+| Chaitali |        6500 |
+| Hardik   |        8500 |
+| Muffy    |       10000 |
++----------+-------------+
+6 rows in set (0.01 sec)
+
+mysql> select name, count(age) from Customers Group By Name;
++----------+------------+
+| name     | count(age) |
++----------+------------+
+| Ramesh   |          1 |
+| Khilan   |          1 |
+| Kaushik  |          1 |
+| Chaitali |          1 |
+| Hardik   |          1 |
+| Muffy    |          1 |
++----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT Salary FROM CUSTOMERS Order By Salary;
++--------+
+| Salary |
++--------+
+|   1500 |
+|   2000 |
+|   6500 |
+|   8500 |
+|  10000 |
++--------+
+5 rows in set (0.05 sec)
+
+mysql> SELECT DISTINCT Salary, Age FROM CUSTOMERS Order By Salary, Age;
++--------+------+
+| Salary | Age  |
++--------+------+
+|   1500 |   25 |
+|   2000 |   23 |
+|   2000 |   32 |
+|   6500 |   25 |
+|   8500 |   27 |
+|  10000 |   24 |
++--------+------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT Salary, Age FROM CUSTOMERS Order By Salary;
++--------+------+
+| Salary | Age  |
++--------+------+
+|   1500 |   25 |
+|   2000 |   23 |
+|   2000 |   32 |
+|   6500 |   25 |
+|   8500 |   27 |
+|  10000 |   24 |
++--------+------+
+6 rows in set (0.00 sec)
